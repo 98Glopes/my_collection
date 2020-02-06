@@ -1,8 +1,9 @@
 import json
 from flask import request, jsonify, Blueprint, abort
 from flask.views import MethodView
-from app import db, app
+from app import db, app, cors
 from app.catalog.models import ComicBook
+from flask_cors import CORS, cross_origin
 
 catalog = Blueprint('catalog', __name__)
 
@@ -11,26 +12,33 @@ catalog = Blueprint('catalog', __name__)
 def home():
     return "welcome to the catalog home"
 
+
+
 class ComicBookView(MethodView):
 
     def get(self, id=None, page=1):
         if not id:
             comic_books= ComicBook.query.paginate(page, 10).items
-            res = {}
+            res = []
+            
             for comic in comic_books:
-                res[comic.id] = {
+                res.append( {
+                    'id': comic.id,
                     'name': comic.name,
                     'autor': comic.autor,
-                    'publisher': comic.publisher
-                }
+                    'publisher': comic.publisher,
+                    'description': comic.description
+                })
         else:
             comic = ComicBook.query.filter_by(id=id).first()
             if not comic:
                 abort(404)
             res = {
+                'id': comic.id,
                 'name': comic.name,
                 'autor': comic.autor,
-                'publisher': comic.publisher
+                'publisher': comic.publisher,
+                'description': comic.description
             }
 
         return jsonify(res)
@@ -40,7 +48,8 @@ class ComicBookView(MethodView):
         name = request.form.get('name')
         autor = request.form.get('autor')
         publisher = request.form.get('publisher')
-        comic = ComicBook(name, autor, publisher)
+        description = request.form.get('description')
+        comic = ComicBook(name, autor, publisher, description)
         db.session.add(comic)
         db.session.commit()
 
@@ -48,7 +57,8 @@ class ComicBookView(MethodView):
             comic.id: {
                 'name': comic.name,
                 'autor': comic.autor,
-                'publisher': comic.publisher
+                'publisher': comic.publisher,
+                'description': description
             }            
         })
 
@@ -57,9 +67,11 @@ class ComicBookView(MethodView):
         comic = ComicBook.query.filter_by(id=id).first()
         if not comic:
             abort(404)
-        comic['name'] = request.form.get('name')
+        #comic['name']
+        comic.name = request.form.get('name')
         comic.autor = request.form.get('autor')
         comic.publisher = request.form.get('publisher')
+        comic.description = request.form.get('description')
         db.session.add(comic)
         db.session.commit()
 
@@ -67,7 +79,8 @@ class ComicBookView(MethodView):
             comic.id:{
                 'name': comic.name,
                 'autor': comic.autor,
-                'publisher': comic.publisher
+                'publisher': comic.publisher,
+                'description': comic.description
             }
         })
 
@@ -83,9 +96,11 @@ class ComicBookView(MethodView):
             comic.id: {
                 'name': comic.name,
                 'autor': comic.autor,
-                'publisher': comic.publisher
+                'publisher': comic.publisher,
+                'description': comic.description
             }
         })
+
 
 comic_view = ComicBookView.as_view('comic_view')
 app.add_url_rule(
@@ -93,4 +108,5 @@ app.add_url_rule(
 )
 app.add_url_rule(
     '/comic_books/<int:id>/', view_func=comic_view, methods=['GET', 'PUT', 'DELETE'],
-)   
+)
+
