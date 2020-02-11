@@ -6,6 +6,14 @@ API created in flask to save my collection of comics with goal to study the deve
 * Publisher;
 * Description;
 
+The available operations are:
+* [Create a new register](#Create-a-new-register);
+* Edit a register;
+* Delete a register;
+* View all registers;
+* View a single register;
+
 The system is online in a Heroku Server, and everybody can test it, available in: http://mycollectionapi.herokuapp.com/comic_books/
 
+## Create a new register:
 
