@@ -19,7 +19,7 @@ The system is online in a Heroku Server, and everybody can test it, available in
 
 To create a new register is required to make a HTTP POST Request for the end point http://mycollectionapi.herokuapp.com/comic_books/ , the request needs a body with a JSON like right bellow:
 
-``` json
+``` javascript
 {
         "autor": "Frank Miller",
         "description": "Writer/artist Frank Miller completely reinvents the legend of Batman in this saga of a near-future Gotham City gone to rot, 10 years after the Dark Knight's retirement.",
