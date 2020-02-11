@@ -22,9 +22,19 @@ To create a new register is required to make a HTTP POST Request for the end poi
 ``` javascript
 {
         "autor": "Frank Miller",
-        "description": "Writer/artist Frank Miller completely reinvents the legend of Batman in this saga of a near-future Gotham City gone to rot, 10 years after the Dark Knight's retirement.",
+        "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...,
         "name": "Batman: The Dark",
         "publisher": "DC Comis"
     }
 ```
-
+The response of the request will be HTTP code 201 and a JSON with the object created including the New Object's Id:
+``` javascript
+{
+    "autor": "Frank Miller",
+    "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...,
+    "id": 29,
+    "name": "Batman: The Dark",
+    "publisher": "DC Comis"
+}
+```
+That id can be used in the others API's resources.
