@@ -22,7 +22,7 @@ To create a new register is required to make a HTTP POST Request for the end poi
 ``` javascript
 {
         "autor": "Frank Miller",
-        "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...,
+        "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...",
         "name": "Batman: The Dark",
         "publisher": "DC Comis"
     }
@@ -31,7 +31,7 @@ The response of the request will be HTTP code 201 and a JSON with the object cre
 ``` javascript
 {
     "autor": "Frank Miller",
-    "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...,
+    "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...",
     "id": 29,
     "name": "Batman: The Dark",
     "publisher": "DC Comis"
