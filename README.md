@@ -15,7 +15,7 @@ The available operations are:
 
 The system is online in a Heroku Server, and everybody can test it, available in: http://mycollectionapi.herokuapp.com/comic_books/
 
-I'm building an site to consume my API, this site use HTML, CSS an JS. The source code is available the [my_collection_frontend repositorie](https://github.com/98Glopes/my_collection_frontend). The site is available to in [My Collection Github Pages](https://98glopes.github.io/my_collection_frontend/index.html).
+I'm building an site to consume my API, this site use HTML, CSS an JS. The source code is available the [my_collection_frontend repositorie](https://github.com/98Glopes/my_collection_frontend). The site is available to in [My Collection Github Pages](https://98glopes.github.io/my_collection_frontend/index.html). I've a [to do list](#To-do-list) with future improvements.
 
 
 ## Create a new register:
