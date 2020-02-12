@@ -9,6 +9,7 @@ API created in flask to save my collection of comics with goal to study the deve
 The available operations are:
 * [Create a new register](#Create-a-new-register);
 * [Edit a register](#Edit-a-register);
+* [Delete a register](#Delete-a-register);
 * View all registers;
 * View a single register;
 
@@ -51,7 +52,7 @@ To edit any register is required the objects Id, so is necessary make a HTTP PUT
         "publisher": "DC Comis"
     }
 ```
-The response will be a HTTP response code 200 and a JSOM with the new content of the object:
+The response will be a HTTP response code 200 and a JSON with the new content of the object:
 ``` javascript
 {
   "autor": "Frank Miller & Klauss Janson",
@@ -61,6 +62,7 @@ The response will be a HTTP response code 200 and a JSOM with the new content of
   "publisher": "DC Comis"
 }
 ```
-If the Id's passed on the URL doesn't exist, the API will return an 404 error code.
+If the Id passed on the URL doesn't exist, the API will return an 404 error code.
 
+## Delete a register
 
