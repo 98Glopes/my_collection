@@ -41,7 +41,7 @@ That id can be used in the others API's resources.
 
 ## Edit a register
  
-To edit any register is required the objects Id, so is necessary make a HTTP PUT request to the endpoint: http://mycollectionapi.herokuapp.com/comic_books/<int:id>. The request need a JSON with the new object's content, like the New Register case. By example:
+To edit any register is required the objects Id, so is necessary make a HTTP PUT request to the endpoint: http://mycollectionapi.herokuapp.com/comic_books/[int:id]. The request need a JSON with the new object's content, like the New Register case. By example:
 ``` javascript
 // PUT request to endpoint http://mycollectionapi.herokuapp.com/comic_books/29/
 
@@ -66,7 +66,7 @@ If the Id passed on the URL doesn't exist, the API will return an 404 error code
 
 ## Delete a register
 
-To delete a register is necessary a HTTP DELETE request to the endpoint http://mycollectionapi.herokuapp.com/comic_books/<int:id> with the Id of the object we want delete. In that case, no JSON body is needed. In the susscesfuly case, the API will return a JSON with the deleted object:
+To delete a register is necessary a HTTP DELETE request to the endpoint http://mycollectionapi.herokuapp.com/comic_books/[int:id]with the Id of the object we want delete. In that case, no JSON body is needed. In the susscesfuly case, the API will return a JSON with the deleted object:
 ``` javascript
 {
   "autor": "Frank Miller & Klauss Janson",
