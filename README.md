@@ -15,6 +15,9 @@ The available operations are:
 
 The system is online in a Heroku Server, and everybody can test it, available in: http://mycollectionapi.herokuapp.com/comic_books/
 
+I'm building an site to consume my API, this site use HTML, CSS an JS. The source code is available the [my_collection_frontend repositorie](https://github.com/98Glopes/my_collection_frontend). The site is available to in [My Collection Github Pages](https://98glopes.github.io/my_collection_frontend/index.html).
+
+
 ## Create a new register:
 
 To create a new register is required to make a HTTP POST Request for the end point http://mycollectionapi.herokuapp.com/comic_books/ , the request needs a body with a JSON like right bellow:
@@ -23,7 +26,7 @@ To create a new register is required to make a HTTP POST Request for the end poi
 {
         "autor": "Frank Miller",
         "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...",
-        "name": "Batman: The Dark",
+        "name": "Batman: The Dark",y_
         "publisher": "DC Comis"
     }
 ```
