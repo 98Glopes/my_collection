@@ -1,6 +1,4 @@
 # My Collection API
-<<<<<<< HEAD
-=======
 
 API created in flask to save my collection of comics with goal to study the development: of RESTFull APIs. The app allow to register comic books in a Postgres database. The comic_book properties are:
 * Name;
@@ -28,7 +26,7 @@ To create a new register is required to make a HTTP POST Request for the end poi
 {
         "autor": "Frank Miller",
         "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...",
-        "name": "Batman: The Dark",y_
+        "name": "Batman: The Dark",
         "publisher": "DC Comis"
     }
 ```
