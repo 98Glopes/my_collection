@@ -111,7 +111,7 @@ At the moment, the API only return first 10 registers in database by debuging re
 
 ## View a single register
 
-To view a single register is necessary do a HTTP GET resquest to the endpoint http://mycollectionapi.herokuapp.com/comic_books/<int:id> with the Id register. No JSON body is needed in that case. The response will be a JSON with de register content, if the id doesn't exist the API will return a 404 error code. A response example can see bellow:
+To view a single register is necessary do a HTTP GET resquest to the endpoint http://mycollectionapi.herokuapp.com/comic_books/[int:id] with the Id register. No JSON body is needed in that case. The response will be a JSON with de register content, if the id doesn't exist the API will return a 404 error code. A response example can see bellow:
 ``` javascript
 {
   "autor": "Marcelo Quintanilha ",
@@ -121,3 +121,10 @@ To view a single register is necessary do a HTTP GET resquest to the endpoint ht
   "publisher": "Veneta"
 }
 ``` 
+
+## To do list:
+
+* Implent JWT authentication;
+* Improve the HTTP response codes;
+* Reject requests without the Header: Content-Type:application/json
+
