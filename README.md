@@ -106,5 +106,18 @@ To view all the register in the database is necessary a HTTP GET request to the 
   }
 }
 ]
-
 ```
+At the moment, the API only return first 10 registers in database by debuging reasons.
+
+## View a single register
+
+To view a single register is necessary do a HTTP GET resquest to the endpoint http://mycollectionapi.herokuapp.com/comic_books/<int:id> with the Id register. No JSON body is needed in that case. The response will be a JSON with de register content, if the id doesn't exist the API will return a 404 error code. A response example can see bellow:
+``` javascript
+{
+  "autor": "Marcelo Quintanilha ",
+  "description": "Baseado em Dostoiévski ",
+  "id": 3,
+  "name": "Talco de Vidro",
+  "publisher": "Veneta"
+}
+``` 
