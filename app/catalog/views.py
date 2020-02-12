@@ -1,5 +1,5 @@
 import json
-from flask import request, jsonify, Blueprint, abort
+from flask import request, jsonify, Blueprint, abort, make_response
 from flask.views import MethodView
 from app import db, app, cors
 from app.catalog.models import ComicBook
@@ -45,44 +45,48 @@ class ComicBookView(MethodView):
     
 
     def post(self):
-        name = request.form.get('name')
-        autor = request.form.get('autor')
-        publisher = request.form.get('publisher')
-        description = request.form.get('description')
+        req_data = request.get_json()
+        name = req_data['name']
+        autor = req_data['autor']
+        publisher = req_data['publisher']
+        description = req_data['description']
         comic = ComicBook(name, autor, publisher, description)
         db.session.add(comic)
         db.session.commit()
 
-        return jsonify({
-            comic.id: {
+        payback = jsonify(
+            {
+                'id': comic.id,
                 'name': comic.name,
                 'autor': comic.autor,
                 'publisher': comic.publisher,
                 'description': description
             }            
-        })
+        )
+        return (payback, 201)
 
 
     def put(self, id):
         comic = ComicBook.query.filter_by(id=id).first()
         if not comic:
             abort(404)
-        #comic['name']
-        comic.name = request.form.get('name')
-        comic.autor = request.form.get('autor')
-        comic.publisher = request.form.get('publisher')
-        comic.description = request.form.get('description')
+        req_data = request.get_json()
+        comic.name = req_data['name']
+        comic.autor = req_data['autor']
+        comic.publisher = req_data['publisher']
+        comic.description = req_data['description']
         db.session.add(comic)
         db.session.commit()
 
-        return jsonify({
-            comic.id:{
+        return jsonify(
+            {
+                'id': comic.id,
                 'name': comic.name,
                 'autor': comic.autor,
                 'publisher': comic.publisher,
                 'description': comic.description
             }
-        })
+        )
 
 
     def delete(delf, id):
@@ -92,14 +96,15 @@ class ComicBookView(MethodView):
         db.session.delete(comic)
         db.session.commit()
         
-        return jsonify({
-            comic.id: {
+        return jsonify(
+            {
+                'id': comic.id,
                 'name': comic.name,
                 'autor': comic.autor,
                 'publisher': comic.publisher,
                 'description': comic.description
             }
-        })
+        )
 
 
 comic_view = ComicBookView.as_view('comic_view')
