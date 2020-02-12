@@ -10,8 +10,8 @@ The available operations are:
 * [Create a new register](#Create-a-new-register);
 * [Edit a register](#Edit-a-register);
 * [Delete a register](#Delete-a-register);
-* View all registers;
-* View a single register;
+* [View all registers]("View-all-register);
+* [View a single register](#View-a-single-register);
 
 The system is online in a Heroku Server, and everybody can test it, available in: http://mycollectionapi.herokuapp.com/comic_books/
 
@@ -66,3 +66,45 @@ If the Id passed on the URL doesn't exist, the API will return an 404 error code
 
 ## Delete a register
 
+To delete a register is necessary a HTTP DELETE request to the endpoint http://mycollectionapi.herokuapp.com/comic_books/<int:id> with the Id of the object we want delete. In that case, no JSON body is needed. In the susscesfuly case, the API will return a JSON with the deleted object:
+``` javascript
+{
+  "autor": "Frank Miller & Klauss Janson",
+  "description": "Writer/artist Frank Miller completely reinvents the legend of Batman...",
+  "id": 29,
+  "name": "Batman: The Dark",
+  "publisher": "DC Comis"
+}
+```
+If the Id doesn't exist on the database, the API will return an 404 error code.
+
+## View all register
+
+To view all the register in the database is necessary a HTTP GET request to the endpoint http://mycollectionapi.herokuapp.com/comic_books/ . No JSON Body is needed in that case, the response will be a JSON list with all the comic books registered in the API:
+``` javascript
+[
+  {
+    "autor": "Marcelo Quintanilha ",
+    "description": "Baseado em Dostoiévski ",
+    "id": 3,
+    "name": "Talco de Vidro",
+    "publisher": "Veneta"
+  },
+  {
+    "autor": "Marcelo D'Salete",
+    "description": "Angola Janga, “pequena Angola” ou, como dizem os livros de história, Palmares. Por mais de cem anos, foi como um reino africano dentro da América do Sul. E, apesar do nome, não tão pequeno: Macaco, a capital de Angola Janga, tinha uma população equivalente a das maiores cidades brasileiras da época.Formada no fim do século XVI, em Pernambuco, a partir dos mocambos criados por fugitivos da escravidão, Angola Janga cresceu, organizou-se e resistiu aos ataques dos militares holandeses e das forças coloniais portuguesas. Tornou-se o grande alvo do ódio dos colonizadores e um símbolo de liberdade para os escravizados. ",
+    "id": 4,
+    "name": "Angola Janga",
+    "publisher": "Veneta"
+  },
+  {
+    "autor": "Art Spiegelman",
+    "description": "Maus (\"rato\", em alemão) é a história de Vladek Spiegelman, judeu polonês que sobreviveu ao campo de concentração de Auschwitz, narrada por ele próprio ao filho Art. O livro é considerado um clássico contemporâneo das histórias em quadrinhos. Foi publicado em duas partes, a primeira em 1986 e a segunda em 1991",
+    "id": 5,
+    "name": "Maus",
+    "publisher": "Quadrinhos na Cia."
+  }
+}
+]
+
+```
